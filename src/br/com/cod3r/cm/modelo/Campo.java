@@ -2,6 +2,7 @@ package br.com.cod3r.cm.modelo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BiConsumer;
 
 public class Campo {
 	
@@ -13,10 +14,16 @@ public class Campo {
 	private boolean marcado = false;
 	
 	private List<Campo> vizinhos = new ArrayList<>();
-
+	private List<CampoObservador> observadores = new ArrayList<>();
+	
+	
 	public Campo(int linha, int coluna) {
 		this.linha = linha;
 		this.coluna = coluna; 
+	}
+	
+	public void registrarObservador (CampoObservador observador) {
+		observadores.add(observador);
 	}
 	
 	public boolean adicionarVizinho(Campo vizinho) {
