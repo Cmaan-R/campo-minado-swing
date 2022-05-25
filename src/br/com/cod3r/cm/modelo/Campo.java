@@ -66,14 +66,14 @@ public class Campo {
 	}
 	
 	public boolean abrir() {
-		if(!aberto && !marcado) {
-			aberto = true;
+		if(!aberto && !marcado) {			
 			
-			
-			if(minado) {
+			if(minado) { 
 				notificarObservadores(CampoEvento.EXPLODIR);
 				return true;
 			}
+			
+			setAberto(true);
 			
 			notificarObservadores(CampoEvento.ABRIR);
 			 
@@ -105,6 +105,10 @@ public class Campo {
 	
 	public void setAberto(boolean aberto) {
 		this.aberto = aberto;
+		
+		if(aberto) {
+			notificarObservadores(CampoEvento.ABRIR);
+		}
 	}
 	
 	public boolean isAberto() {
