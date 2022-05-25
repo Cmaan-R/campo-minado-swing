@@ -45,11 +45,13 @@ implements CampoObservador,	MouseListener {
 			break;
 		default:
 			aplicarEstiloPadrao();
+			
 		}
 	}
 
 	private void aplicarEstiloPadrao() {
 		setBackground(BG_PADRAO);
+		setBorder(BorderFactory.createBevelBorder(0));
 		setText("");
 	}
 
