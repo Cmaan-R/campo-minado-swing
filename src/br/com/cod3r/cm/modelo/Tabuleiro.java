@@ -26,6 +26,10 @@ public class Tabuleiro implements CampoObservador {
 		
 	}
 	
+	public void paraCadaCampo(Consumer<Campo> funcao) {
+		campos.forEach(funcao);
+	}
+	
 	public void registrarObservador(Consumer<ResultadoEvento> observador) {
 		observadores.add(observador);
 	}
