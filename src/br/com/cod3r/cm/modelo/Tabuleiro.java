@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class Tabuleiro {
+public class Tabuleiro implements CampoObservador {
 		
 	private int linhas;
 	private int colunas;
@@ -46,7 +46,9 @@ public class Tabuleiro {
 	private void gerarCampos() {
 		for (int linha  = 0; linha < linhas; linha++) {
 			for (int coluna = 0; coluna < colunas; coluna++) {
-				campos.add(new Campo(linha, coluna));
+				Campo campo = new Campo(linha, coluna);
+				campo.registrarObservador(this);
+				campos.add(campo);
 			}
 		}
 	}
@@ -78,5 +80,13 @@ public class Tabuleiro {
 	public void reiniciar () {
 		campos.stream().forEach(c -> c.reiniciar());
 		sortearMinas();
+	}
+	
+	public void eventoOcorreu (Campo campo, CampoEvento evento) {
+		if(evento == CampoEvento.EXPLODIR) {
+			System.out.println("Perdeu...: ");
+		} else if (objetivoAlcancado()) {
+			System.out.println("Ganhou...: ");
+		}
 	}
 }
