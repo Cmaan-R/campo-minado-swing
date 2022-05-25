@@ -60,15 +60,39 @@ implements CampoObservador,	MouseListener {
 	}
 
 	private void aplicarEstiloAbrir() {
+		setBackground(BG_PADRAO);
+		setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		
+		switch (campo.minasNaVizinhanca()) {
+		case 1: 
+			setForeground(BG_TEXTO_VERDE);
+			break;
+		case 2:
+			setForeground(Color.BLUE);
+		case 3 :
+			setForeground(Color.YELLOW);
+		case 4 :
+		case 5 :
+		case 6 :
+			setForeground(Color.RED);
+			break;
+		default:
+			setForeground(Color.PINK);
+		}
+		
+		String valor = !campo.vizinhancaSegura() ?
+				campo.minasNaVizinhanca() + "" : "";
+		setText(valor);
 	}
 	//Interface dos eventos do mouse
 	@Override
 	public void mousePressed(MouseEvent e) {
 		if(e.getButton() == 1 ) {
 			System.out.println("Botao Esquerdo!");
+			campo.abrir();
 		} else {
 			System.out.println("Outro botao");
+			campo.alternarMarcacao();
 		}
 	}
 	
