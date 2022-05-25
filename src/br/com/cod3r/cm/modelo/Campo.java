@@ -29,7 +29,6 @@ public class Campo {
 		observadores.stream()
 		.forEach(o -> o.eventoOcorreu(this, evento) );
 	}
-	//Testegit
 	
 	public boolean adicionarVizinho(Campo vizinho) {
 		boolean linhaDiferente = linha != vizinho.linha;
