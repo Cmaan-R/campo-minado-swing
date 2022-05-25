@@ -27,7 +27,7 @@ implements CampoObservador,	MouseListener {
 		setBackground(BG_PADRAO);
 		setBorder(BorderFactory.createBevelBorder(0));
 		
-		
+		addMouseListener(this);
 		campo.registrarObservador(this);
 	}
 	
