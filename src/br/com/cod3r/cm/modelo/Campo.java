@@ -2,7 +2,6 @@ package br.com.cod3r.cm.modelo;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BiConsumer;
 
 public class Campo {
 	
@@ -30,7 +29,7 @@ public class Campo {
 		observadores.stream()
 		.forEach(o -> o.eventoOcorreu(this, evento) );
 	}
-	
+	//Testegit
 	
 	public boolean adicionarVizinho(Campo vizinho) {
 		boolean linhaDiferente = linha != vizinho.linha;
